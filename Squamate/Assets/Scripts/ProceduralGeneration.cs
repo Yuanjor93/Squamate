@@ -7,7 +7,9 @@ public class ProceduralGeneration : MonoBehaviour
     [SerializeField] GameObject brick, dirt, grass, stone;
     void Start()
     {
+        
         Generation();
+        generateFloorAndCeiling();
     }
 
     void Generation()
@@ -15,25 +17,25 @@ public class ProceduralGeneration : MonoBehaviour
         for (int x = 0; x < width; x++)//This will help spawn a tile on the x axis
         {
             // now for procedural generation we need to gradually increase and decrease the height value
-            int minHeight = height - 1;
-            int maxHeight = height + 2;
+            int minHeight = height-21; // - 1
+            int maxHeight = height-19; // + 2
             height = Random.Range(minHeight, maxHeight);
             int minStoneSpawnDistance = height - minStoneheight;
             int maxStoneSpawnDistance = height - maxStoneHeight;
             int totalStoneSpawnDistance = Random.Range(minStoneSpawnDistance, maxStoneSpawnDistance);
             //Perlin noise.
-            for (int y = 0; y < height; y++)//This will help spawn a tile on the y axis
-            {
-                if (y < totalStoneSpawnDistance)
-                {
-                    spawnObj(stone, x, y); // stone
-                }
-                else
-                {
-                    spawnObj(dirt, x, y); // dirt
-                }
+            //for (int y = 0; y < height-10; y++)//This will help spawn a tile on the y axis
+            //{
+            //    if (y < totalStoneSpawnDistance)
+            //    {
+            //        spawnObj(stone, x, y); // stone
+            //    }
+            //    else
+            //    {
+            //        spawnObj(dirt, x, y); // dirt
+            //    }
 
-            }
+            //}
             if (totalStoneSpawnDistance == height)
             {
                 spawnObj(stone, x, height); // stone
@@ -45,6 +47,17 @@ public class ProceduralGeneration : MonoBehaviour
 
         }
     }
+
+    void generateFloorAndCeiling()
+    {
+        for ( int x = 0; x < width; x++)//This will help spawn a tile on the x axis
+        {
+            spawnObj(dirt, x, 1);
+            spawnObj(dirt, x, height);
+        }
+    }
+
+
 
     void spawnObj(GameObject obj, int width, int height)//What ever we spawn will be a child of our procedural generation gameObj
     {
