@@ -17,8 +17,8 @@ public class ProceduralGeneration : MonoBehaviour
         for (int x = 0; x < width; x++)//This will help spawn a tile on the x axis
         {
             // now for procedural generation we need to gradually increase and decrease the height value
-            int minHeight = height-21; // - 1
-            int maxHeight = height-19; // + 2
+            int minHeight = height-1; // - 1
+            int maxHeight = height+2; // + 2
             height = Random.Range(minHeight, maxHeight);
             int minStoneSpawnDistance = height - minStoneheight;
             int maxStoneSpawnDistance = height - maxStoneHeight;
@@ -53,7 +53,7 @@ public class ProceduralGeneration : MonoBehaviour
         for ( int x = 0; x < width; x++)//This will help spawn a tile on the x axis
         {
             spawnObj(dirt, x, 1);
-            spawnObj(dirt, x, height);
+            spawnObj(dirt, x, height+30);
         }
     }
 

@@ -728,9 +728,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   width: 100
-  height: 50
-  minStoneheight: 3
-  maxStoneHeight: 20
+  height: 30
+  minStoneheight: 4
+  maxStoneHeight: 6
   brick: {fileID: 400707184}
   dirt: {fileID: 112052639}
   grass: {fileID: 608269706}
